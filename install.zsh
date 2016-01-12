@@ -4,4 +4,4 @@ git clone --recursive https://github.com/cplee/prezto.git "${ZDOTDIR:-$HOME}/.zp
 
 ${ZDOTDIR:-$HOME}/.zprezto/link.zsh
 
-chsh -s /bin/sh
+sudo chsh -s /bin/zsh $USER
