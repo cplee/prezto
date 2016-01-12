@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/casele/Dev/docker-support/vspglobal_nginx'
-let g:netrw_dirhist_2='/Users/casele/Dev/docker-support/vspglobal_httpd'
-let g:netrw_dirhist_3='/Users/casele/Dev/cli-tools/moxy/bin'
-let g:netrw_dirhist_4='/Users/casele/Dev/android-accessories/adk2012/board/tools/adk2tool'
-let g:netrw_dirhist_5='/Users/casele/Dev/api-support/ipa/ipa-jaxrs-hystrix'
-let g:netrw_dirhist_6='/Users/casele/.boot2docker/certs/boot2docker-vm'
-let g:netrw_dirhist_7='/Users/casele/.oh-my-zsh'
