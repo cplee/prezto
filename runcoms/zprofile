@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='vim'
+export VISUAL='vim'
 export PAGER='less'
 
 #
@@ -43,6 +43,7 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  ~/bin
   /usr/local/{bin,sbin}
   $path
 )
@@ -72,3 +73,25 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+#
+# Docker
+#
+if (( $+commands[docker-machine] )); then
+  if [[ -t 0 || -t 1 ]]; then
+    eval $(docker-machine env default)
+    print
+  fi
+fi
+
+#
+# Chef awesomeness
+#
+alias chef-shell-init="$(chef shell-init zsh)"
+
+#
+# history
+#
+setopt no_share_history
+
+
