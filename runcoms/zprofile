@@ -87,7 +87,12 @@ fi
 #
 # Chef awesomeness
 #
-alias chef-shell-init="$(chef shell-init zsh)"
+if (( $+commands[chef] )); then
+  if [[ -t 0 || -t 1 ]]; then
+    alias chef-shell-init="$(chef shell-init zsh)"
+    print
+  fi
+fi
 
 #
 # history
