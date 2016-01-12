@@ -1,0 +1,19 @@
+ ; .editorconfig
+
+  root = true
+
+  [**.js]
+  indent_style = space
+  indent_size = 4
+  brace_style = expand
+
+  [**.css]
+  indent_style = space
+  indent_size = 4
+  brace_style = expand
+
+  [**.html]
+  indent_style = space
+  indent_size = 4
+  max_char = 78
+  brace_style = expand
