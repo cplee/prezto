@@ -1,0 +1,33 @@
+"set clipboard=unnamed
+
+set paste
+set nocompatible
+set noai
+set softtabstop=2
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set showmatch
+set ignorecase
+set background=dark
+set hlsearch
+set incsearch
+set number
+syntax on
+
+filetype plugin indent on
+
+execute pathogen#infect()
+
+"autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+"autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+"autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+
+" for js
+autocmd FileType json noremap <buffer>  <c-f> :call JsBeautify()
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()
+

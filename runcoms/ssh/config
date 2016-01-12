@@ -1,0 +1,7 @@
+Host *
+	XAuthLocation	/usr/bin/xauth
+	ForwardAgent yes
+	ForwardX11	yes
+	ForwardX11Trusted	yes
+  StrictHostKeyChecking no
+

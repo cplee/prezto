@@ -1,0 +1,11 @@
+[user]
+	name = Casey Lee
+	email = casey.lee@stelligent.com
+[core]
+	autocrlf = false
+[color]
+	ui = true
+[push]
+	default = simple
+[url "https://github"]
+	insteadOf = git://github
