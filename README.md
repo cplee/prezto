@@ -18,7 +18,7 @@ zsh -c "$(curl -fsSL https://raw.githubusercontent.com/cplee/prezto/master/insta
 If you add new dotfiles to ~/.zprezto, then you can link them later by running:
 
 ```
-~/.zprezto/link.zsh
+zlink
 ```
 
 ### Troubleshooting
