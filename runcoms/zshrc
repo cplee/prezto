@@ -16,3 +16,5 @@ fi
 if [[ -a "/usr/local/aws/bin/aws_zsh_completer.sh" ]]; then
   source "/usr/local/aws/bin/aws_zsh_completer.sh" 
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
