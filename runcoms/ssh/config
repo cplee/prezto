@@ -5,3 +5,4 @@ Host *
 	ForwardX11Trusted	yes
   StrictHostKeyChecking no
 
+UseRoaming no
