@@ -21,6 +21,14 @@ If you add new dotfiles to ~/.zprezto, then you can link them later by running:
 zlink
 ```
 
+Vundle
+------
+Vundle is configured as a git submodule under `runcoms/vim/bundle`.  The `vimrc` file in `runcoms` configures [Vundle](https://github.com/VundleVim/Vundle.vim).  Add additional plugins to that vimrc file and install via:
+
+```
+vim +PluginInstall +qall
+```
+
 ### Troubleshooting
 
 If you are not able to find certain commands after switching to *Prezto*,
