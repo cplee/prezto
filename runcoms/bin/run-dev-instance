@@ -1,0 +1,12 @@
+#!/bin/sh
+
+BASEDIR=$(dirname "$0")
+
+aws ec2 run-instances \
+  --count 1 \
+  --image-id ami-d93622b8 \
+  --instance-type t1.micro \
+  --key-name casey-labs-uswest2 \
+  --security-groups casey-ssh \
+  --iam-instance-profile Name="casey-labs-ec2" \
+  --user-data file://$BASEDIR/zprezto-install-user-data
