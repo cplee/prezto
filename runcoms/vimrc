@@ -1,4 +1,5 @@
 "set clipboard=unnamed
+set t_Co=256
 
 set paste
 set nocompatible
@@ -47,6 +48,8 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'elzr/vim-json'
 Plugin 'avakhov/vim-yaml'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'vim-airline/vim-airline'
+
 
 
 " All of your Plugins must be added before the following line
@@ -64,3 +67,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+
+"""""""""""""""""
+"  vim-airline  "
+"""""""""""""""""
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = "bubblegum"
