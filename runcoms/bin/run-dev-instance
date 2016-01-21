@@ -31,10 +31,15 @@ res = ec2.run_instances('ami-d93622b8',
                   user_data=user_data_script,
                   instance_type='t1.micro')
 
-instance_id = res.instances[0].id
-time.sleep(2)
-res = ec2.get_all_instances(instance_ids=[instance_id])
-ip_address = res[0].instances[0].ip_address
+instance = res.instances[0]
+while instance.ip_address is None:
+    time.sleep(1)
+    instance.update()
+
+
+instance_id = instance.id
+ip_address = instance.ip_address
+ec2.create_tags([instance_id], {"Name": "casey-dev"})
 
 print "%s %s" % (instance_id, ip_address)
 
