@@ -1,12 +1,40 @@
+#!/usr/bin/env python
+
+import boto.ec2
+import time
+
+ec2 = boto.ec2.connect_to_region('us-west-2')
+
+user_data_script ="""
 #!/bin/sh
 
-BASEDIR=$(dirname "$0")
+yum install -y python-pip git zsh
+pip install --upgrade boto
 
-aws ec2 run-instances \
-  --count 1 \
-  --image-id ami-d93622b8 \
-  --instance-type t1.micro \
-  --key-name casey-labs-uswest2 \
-  --security-groups casey-ssh \
-  --iam-instance-profile Name="casey-labs-ec2" \
-  --user-data file://$BASEDIR/zprezto-install-user-data
+# setup an script to install the awesomeness
+cat <<'EOT' > ~ec2-user/.zinstall
+zsh -c "$(curl -fsSL https://raw.githubusercontent.com/cplee/prezto/master/install.zsh)"
+rm -f ~ec2-user/.zinstall
+zsh
+EOT
+
+# run install from .bash_profile
+cat <<'EOT' >> ~ec2-user/.bash_profile
+[[ -f "$HOME/.zinstall" ]] && source "$HOME/.zinstall"
+EOT
+"""
+
+res = ec2.run_instances('ami-d93622b8', 
+                  key_name='casey-labs-uswest2',
+                  security_groups=['casey-ssh'],
+                  instance_profile_name='casey-labs-ec2',
+                  user_data=user_data_script,
+                  instance_type='t1.micro')
+
+instance_id = res.instances[0].id
+time.sleep(2)
+res = ec2.get_all_instances(instance_ids=[instance_id])
+ip_address = res[0].instances[0].ip_address
+
+print "%s %s" % (instance_id, ip_address)
+
