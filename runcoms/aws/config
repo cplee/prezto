@@ -2,3 +2,11 @@
 output = json
 region = us-west-2
 
+[profile stelligent]
+output = json
+region = us-west-2
+
+[profile nektos]
+output = json
+region = us-west-2
+
