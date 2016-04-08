@@ -6,6 +6,10 @@ region = us-west-2
 output = json
 region = us-west-2
 
+[profile training]
+output = json
+region = us-west-2
+
 [profile nektos]
 output = json
 region = us-west-2

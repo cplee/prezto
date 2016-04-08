@@ -11,7 +11,7 @@ import base64
 username = 'casey_lee'
 branch = 'US0000-merge'
 base_url = 'http://stash.chotel.com:8080'
-project = 'DEV'
+project = os.getenv('PROJECT', 'DEV')
 repo = os.path.basename( subprocess.Popen(['git','rev-parse','--show-toplevel'], stdout=subprocess.PIPE).stdout.read().rstrip() )
 
 ## Get password
@@ -55,8 +55,8 @@ headers = {
 }
 print "## Creating pull request"
 response = requests.post(create_url, data=data_json, headers=headers)
-if(response.status_code != 200):
-  print "  Unable to create pull request: "+str(response.status_code)
+if(response.status_code >= 400):
+  print "  Unable to create pull request ("+create_url+"): "+str(response.status_code)
 else:
   pr = json.loads(response.text)
 
