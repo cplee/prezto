@@ -14,3 +14,10 @@ region = us-west-2
 output = json
 region = us-west-2
 
+[profile imagen]
+output = json
+region = us-west-2
+
+[profile imagen-test]
+output = json
+region = us-west-2

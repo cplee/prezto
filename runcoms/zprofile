@@ -79,12 +79,12 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 #
 # Docker
 #
-if (( $+commands[docker-machine] )); then
-  if [[ -t 0 || -t 1 ]]; then
-    eval $(docker-machine env default)
-    print
-  fi
-fi
+#if (( $+commands[docker-machine] )); then
+#  if [[ -t 0 || -t 1 ]]; then
+#    eval $(docker-machine env default)
+#    print
+#  fi
+#fi
 
 #
 # Chef awesomeness
@@ -96,10 +96,29 @@ if (( $+commands[chef] )); then
   fi
 fi
 
+# git branch history
+func dg() {
+  if [[ $1 ]] ;then
+    git checkout $(git reflog | sed -ne '/checkout: moving /s/.*moving.* to \(.*\)/\1/p'| awk "!x[\$0]++ {if(i==$1) {print};i++}")
+  else
+    git reflog | sed -ne '/checkout: moving /s/.*moving.* to \(.*\)/\1/p'| awk '!x[$0]++ {print i++" "$0}' |head -10
+  fi
+}
 
 #
 # history
 #
 setopt no_share_history
 
+#
+# choice aliases
+#
+chissh () { 
+  ssh -i ~/.ssh/casey_lee-choice-uswest2.pem ec2-user@$1
+}
 
+
+# Setting PATH for Python 3.5
+# The orginal version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+export PATH
